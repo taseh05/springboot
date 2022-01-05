@@ -1,6 +1,6 @@
 package homeloancalculator.dto;
 
-public class LoadRequest {
+public class LoanRequest {
 	private Integer loanAmount;
 	private Integer tenure;
 	private Integer rateOfinterest;
@@ -8,6 +8,7 @@ public class LoadRequest {
 	public Integer getLoanAmount() {
 		return loanAmount;
 	}
+	
 	public void setLoanAmount(Integer loanAmount) {
 		this.loanAmount = loanAmount;
 	}
@@ -22,5 +23,10 @@ public class LoadRequest {
 	}
 	public void setRateOfinterest(Integer rateOfinterest) {
 		this.rateOfinterest = rateOfinterest;
+	}
+	@Override
+	public String toString() {
+		return "LoanRequest [loanAmount=" + loanAmount + ", tenure=" + tenure + ", rateOfinterest=" + rateOfinterest
+				+ "]";
 	}
 }
