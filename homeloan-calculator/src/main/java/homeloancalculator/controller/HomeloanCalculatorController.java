@@ -17,7 +17,7 @@ import homeloancalculator.dto.LoanResponse;
 @RestController
 public class HomeloanCalculatorController {
 	private static Logger log = LoggerFactory.getLogger(HomeloanCalculatorController.class); 
-	
+
 	@GetMapping(path="/health")
 	public String health() {
 		log.info("In /health endpoint");
@@ -30,15 +30,20 @@ public class HomeloanCalculatorController {
 	@PostMapping(path="/calcpremium")
 	public LoanResponse calculatePremium(@RequestBody LoanRequest loanRequest)
 	{
-		
+
 		log.info("{}",loanRequest);
+		Integer principal=loanRequest.getLoanAmount();
+		Integer roi=loanRequest.getRateOfinterest();
+		Integer time=loanRequest.getTenure()*12;
+		Double p= (principal * roi) / (1 - Math.pow(1 + roi, -time));
+		log.info("{}",p);	
 		LoanResponse loanresponse=new LoanResponse();
-		loanresponse.setPrincipal(200000);
+		loanresponse.setPrincipal(p);
 		loanresponse.setInterest(50000);
 		loanresponse.setRequestDate(String.valueOf(new Date()));
 		return loanresponse;
 	}
-	
-	
-	
+
+
+
 }

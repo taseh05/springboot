@@ -1,14 +1,14 @@
 package homeloancalculator.dto;
 
 public class LoanResponse {
-	private Integer principal;
+	private Double principal;
 	private Integer interest;
 	private String requestDate;
 	
-	public Integer getPrincipal() {
+	public Double getPrincipal() {
 		return principal;
 	}
-	public void setPrincipal(Integer principal)
+	public void setPrincipal(Double principal)
 	{
 		this.principal = principal;
 	}
