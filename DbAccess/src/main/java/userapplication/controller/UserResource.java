@@ -57,7 +57,7 @@ public class UserResource {
 		u.setCreatedOn(current_time);
 		
 		UserHistory uh =new UserHistory();
-		uh.setCreatedOn(current_time);
+		uh .setCreatedOn(current_time);
 		uh.setEvent("create");
 		uh.setMasterUser(u);
 		
