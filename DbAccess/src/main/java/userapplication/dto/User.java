@@ -1,4 +1,4 @@
-package dbaccess.dto;
+package userapplication.dto;
 
 import java.util.Date;
 

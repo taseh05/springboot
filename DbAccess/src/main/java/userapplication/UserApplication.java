@@ -1,13 +1,13 @@
-package dbaccess;
+package userapplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DbAccessApplication {
+public class UserApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DbAccessApplication.class, args);
+		SpringApplication.run(UserApplication.class, args);
 	}
 
 }
