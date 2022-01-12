@@ -56,16 +56,13 @@ public class UserResource {
 		Timestamp current_time = new Timestamp(Calendar.getInstance().getTimeInMillis());
 		u.setCreatedOn(current_time);
 		
-		UserHistory uh =new UserHistory();
+		UserHistory uh = new UserHistory();
 		uh .setCreatedOn(current_time);
 		uh.setEvent("create");
 		uh.setMasterUser(u);
 		
-		List<UserHistory> histories=new ArrayList<>();
-		histories.add(uh);
-		u.setUserHistory(histories);
+		u.getUserHistory().add(uh);
 		masterUserRepository.save(u);
-		//userHistoryRepository.save(uh);
 	}
 
 	@PutMapping("/user/update")

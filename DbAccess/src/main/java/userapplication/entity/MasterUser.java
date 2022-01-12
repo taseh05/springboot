@@ -2,16 +2,14 @@ package userapplication.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,9 +17,6 @@ import javax.persistence.Table;
 @Entity(name = "MasterUser")
 @Table(name = "master_user")
 public class MasterUser implements Serializable {	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5063013448053881669L;
 
 	@Id
@@ -30,7 +25,7 @@ public class MasterUser implements Serializable {
 
 	@Column(name="username")
 	private String name;
-	
+
 	@Column(name="password")
 	private String password;
 
@@ -50,11 +45,10 @@ public class MasterUser implements Serializable {
 
 	@Column(name="updated_on")
 	private Timestamp updatedOn; 
-	
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id",referencedColumnName = "id",nullable = false,insertable = false, updatable = false)
-    private List<UserHistory> userHistory;
-	
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<UserHistory> userHistory = new ArrayList<>();
+
 	public List<UserHistory> getUserHistory() {
 		return userHistory;
 	}
@@ -64,8 +58,6 @@ public class MasterUser implements Serializable {
 	}
 
 	public MasterUser() {}
-
-	
 
 	public MasterUser(Integer id, String name, String password, String phoneNo, Timestamp createdOn,
 			Timestamp updatedOn) {
@@ -117,5 +109,4 @@ public class MasterUser implements Serializable {
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-
 }
